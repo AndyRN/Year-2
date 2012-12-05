@@ -48,8 +48,10 @@ public class DegreeCeremonyFrontEnd {
           break;
         }
         default:
-          System.out.println("[Invalid choice]");
-      }
+          if (choice != -1) {
+            System.out.println("[Invalid choice]");
+          }
+      }//switch(choice)
     }
   }
 
@@ -134,7 +136,7 @@ public class DegreeCeremonyFrontEnd {
     int num = getNumber("Enter Student's number: ");
     String guestName = getDetail("Enter Guest's name: ");
     String guestEmail = getDetail("Enter Guest's email address: ");
-    
+
     // Now try to add the guest to the student
     result = thisCeremony.addGuest(num, guestName, guestEmail);
 
