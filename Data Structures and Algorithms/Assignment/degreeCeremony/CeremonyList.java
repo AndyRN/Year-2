@@ -58,6 +58,10 @@ public class CeremonyList {
     return result;
   }
 
+  /**
+   * Displays all Guests for a specific Student.
+   * @param number 
+   */
   public void displayGuestList(int number) {
     Student aStudent = getStudent(number);
     int index = myList.indexOf(aStudent);
@@ -79,12 +83,21 @@ public class CeremonyList {
     }
   }
 
+  /**
+   * Displays all guests.
+   */
   public void listAllGuests() {
     for (int i = 0; i < myList.size(); i++) {
       myList.get(i).displayGuestList();
     }
   }
 
+  /**
+   * This searches through the current Student list for a student that has the
+   * number requested.
+   * @param number
+   * @return student - Null if the Student was not found. 
+   */
   private Student getStudent(int number) {
     Student student = null;
 
@@ -98,6 +111,12 @@ public class CeremonyList {
     return student;
   }
 
+  /**
+   * This searches through all the Student list to see if a Student is already 
+   * using the number.
+   * @param number
+   * @return True if a matching number is found. 
+   */
   private boolean studentCheckNum(int number) {
     for (int i = 0; i < myList.getCurrentLength(); i++) {
       if (number == myList.get(i).getStudentNum()) {
@@ -107,6 +126,12 @@ public class CeremonyList {
     return false;
   }
 
+  /**
+   * This searches through the current Guest list for a Student to see if a Guest
+   * is already using the email address.
+   * @param email
+   * @return True if a matching email is found.
+   */
   private boolean guestCheckEmail(String email) {
     for (int i = 0; i < myList.getCurrentLength(); i++) {
       SList guestList = myList.get(i).getGuestList();

@@ -10,6 +10,11 @@ public class DList<item> {
   private DNode firstNode = new DNode(null);
   private int currentLength = 0;
 
+  /**
+   * Searches through the current Student list to see if a Student exists.
+   * @param aStudent
+   * @return found
+   */
   public boolean contains(item aStudent) {
     boolean found = false;
     DNode currentNode = firstNode;
@@ -27,6 +32,10 @@ public class DList<item> {
     return found;
   }
 
+  /**
+   * Adds aStudent to the beginning of the Student list
+   * @param aStudent 
+   */
   public void add(item aStudent) {
     if (!contains(aStudent)) {
       DNode node = new DNode(aStudent, firstNode);
@@ -35,6 +44,12 @@ public class DList<item> {
     }
   }
 
+  /**
+   * This searches through to find the location within the list of a 
+   * specific Student
+   * @param aStudent
+   * @return val 
+   */
   public int indexOf(item aStudent) {
     int val = -1;
     DNode currentNode = firstNode;
@@ -50,6 +65,11 @@ public class DList<item> {
     return val;
   }
 
+  /**
+   * This returns the Student from a specific index
+   * @param index
+   * @return Student
+   */
   public item get(int index) {
     DNode currentNode = firstNode;
 
