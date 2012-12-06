@@ -39,6 +39,9 @@ public class CeremonyList {
     int result = -1;
     Guest newGuest = new Guest(guestName, email);
     Student aStudent = getStudent(number);
+	if(aStudent == null){
+	  return result;
+	}
     int index = myList.indexOf(aStudent);
     if (index >= 0) {
       if (!guestCheckEmail(email)) {
