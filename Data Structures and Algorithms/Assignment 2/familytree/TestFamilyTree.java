@@ -187,6 +187,15 @@ public class TestFamilyTree {
           scan.nextLine();
           fTree1.listGreatNGrandChildren(personName, numOfGens);
           break;
+        case 'V':
+          fTree1.listAllPartners(this.getPersonName());
+          break;
+        case 'W':
+          fTree1.listAllParents(this.getPersonName());
+          break;
+        case 'Y':
+          fTree1.listCurrentPartner(this.getPersonName());
+          break;
         default:
           System.out.println("\n[Invalid input choice. Try again]\n");
       }
@@ -238,6 +247,7 @@ public class TestFamilyTree {
    */
   private void queryMenu() {
     System.out.println("\n\n< FAMILY TREE QUERY MENU >\n");
+    System.out.println("--- Original Options ---");
     System.out.println("K\tList person details");
     System.out.println("L\tList parent details");
     System.out.println("M\tList children");
@@ -249,6 +259,11 @@ public class TestFamilyTree {
     System.out.println("S\tList all cousins");
     System.out.println("T\tList all great great… (repeated N times) grandparents");
     System.out.println("U\tList all great great… (repeated N times) grandchildren\n");
+
+    System.out.println("--- Andy's Extra Options!---");
+    System.out.println("V\tList all partners");
+    System.out.println("W\tList all parents");
+    System.out.println("Y\tList current partner\n");
 
     System.out.println("X\tEXIT QUERY\n");
 
@@ -338,10 +353,10 @@ public class TestFamilyTree {
     String selection;
 
     tFT.menu();
-    try{
-    selection = scan.nextLine().toUpperCase();
-    mChoice = selection.charAt(0);
-    }catch(Exception e){
+    try {
+      selection = scan.nextLine().toUpperCase();
+      mChoice = selection.charAt(0);
+    } catch (Exception e) {
     }
     while (mChoice != 'X') {
       switch (mChoice) {

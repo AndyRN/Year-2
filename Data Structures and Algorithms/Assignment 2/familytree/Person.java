@@ -33,23 +33,54 @@ public class Person {
     this.married = false;
     this.adopted = false;
   }
-  
-  public void details(){
+
+  public void details() {
     System.out.println("\nName = " + this.name);
-      System.out.println("Date of Birth = " + this.dOB);
-      System.out.println("Birthplace = " + this.birthPlace);
-      System.out.println("Married = " + this.married);
-      System.out.println("Adopted = " + this.adopted);
+    System.out.println("Date of Birth = " + this.dOB);
+    System.out.println("Birthplace = " + this.birthPlace);
+    System.out.println("Married = " + this.married);
+    System.out.println("Adopted = " + this.adopted);
   }
 
   public void addPartner(Person partner) {
     relationshipArray.add(partner);
   }
 
-  public void addParent(Person parent){
+  public void listCurrentPartner() {
+    if (relationshipArray.isEmpty()) {
+      System.out.println("\n[" + this.name + " has had no partners]");
+    } else {
+      System.out.println("");
+      relationshipArray.get(relationshipArray.size() - 1).details();
+    }
+  }//listCurrentPartner()
+
+  public void listAllPartners() {
+    if (relationshipArray.isEmpty()) {
+      System.out.println("\n[" + this.name + " has had no partners]");
+    } else {
+      System.out.println("");
+      for (int i = 0; i < relationshipArray.size(); i++) {
+        System.out.println("- " + relationshipArray.get(i).getName() + " " + relationshipArray.get(i).getdOB());
+      }
+    }
+  }//listPartners()
+
+  public void addParent(Person parent) {
     parentArray.add(parent);
   }
-  
+
+  public void listAllParents() {
+    if (parentArray.isEmpty()) {
+      System.out.println("\n[" + this.name + " has had no parents]");
+    } else {
+      System.out.println("");
+      for (int i = 0; i < parentArray.size(); i++) {
+        System.out.println("- " + parentArray.get(i).getName() + " " + parentArray.get(i).getdOB());
+      }
+    }
+  }//listParents()
+
   public String getName() {
     return name;
   }
