@@ -33,6 +33,14 @@ public class Person {
     this.married = false;
     this.adopted = false;
   }
+  
+  public void details(){
+    System.out.println("\nName = " + this.name);
+      System.out.println("Date of Birth = " + this.dOB);
+      System.out.println("Birthplace = " + this.birthPlace);
+      System.out.println("Married = " + this.married);
+      System.out.println("Adopted = " + this.adopted);
+  }
 
   public void addPartner(Person partner) {
     relationshipArray.add(partner);

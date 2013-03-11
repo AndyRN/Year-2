@@ -141,11 +141,7 @@ public class FamilyTree {
     if (i == -1) {
       System.out.println("\n[Person does not exist]");
     } else {
-      System.out.println("\nName = " + treeArray.get(i).getName());
-      System.out.println("Date of Birth = " + treeArray.get(i).getdOB());
-      System.out.println("Birthplace = " + treeArray.get(i).getBirthPlace());
-      System.out.println("Married = " + treeArray.get(i).isMarried());
-      System.out.println("Adopted = " + treeArray.get(i).isAdopted());
+      treeArray.get(i).details();
     }//if(exists)
   }//listPersonDetails()
 
@@ -162,21 +158,15 @@ public class FamilyTree {
     } else {
       try {
         int mother = treeArray.get(i).getmPos();//Returns the position of the mother object in the array.
-        System.out.println("\n--- Mother ---");
-        System.out.println("Name = " + treeArray.get(mother).getName());
-        System.out.println("Date of Birth = " + treeArray.get(mother).getdOB());
-        System.out.println("Birth Place = " + treeArray.get(mother).getBirthPlace());
-        System.out.println("Married = " + treeArray.get(mother).isMarried());
+        System.out.print("\n--- Mother ---");
+        treeArray.get(mother).details();
       } catch (Exception e) {
         System.out.println("\n[Mother does not exist]");
       }
       try {
         int father = treeArray.get(i).getfPos();//Returns the position of the father object in the array.
-        System.out.println("\n--- Father ---");
-        System.out.println("Name = " + treeArray.get(father).getName());
-        System.out.println("Date of Birth = " + treeArray.get(father).getdOB());
-        System.out.println("Birth Place = " + treeArray.get(father).getBirthPlace());
-        System.out.println("Married = " + treeArray.get(father).isMarried());
+        System.out.print("\n--- Father ---");
+        treeArray.get(father).details();
       } catch (Exception e) {
         System.out.println("\n[Father does not exist]");
       }
@@ -199,10 +189,8 @@ public class FamilyTree {
       //This loop finds all person objects that have their fPos or mPos pointing at the person requested.
       for (int c = 0; c < treeArray.size(); c++) {
         if (treeArray.get(c).getfPos() == i || treeArray.get(c).getmPos() == i) {
-          System.out.println("\n--- Child ---");
-          System.out.println("Name = " + treeArray.get(c).getName());
-          System.out.println("Date of Birth = " + treeArray.get(c).getdOB());
-          System.out.println("Birth Place = " + treeArray.get(c).getBirthPlace());
+          System.out.print("\n--- Child ---");
+          treeArray.get(c).details();
           child = true;
         }
       }//for(child)
@@ -232,10 +220,8 @@ public class FamilyTree {
         if (((treeArray.get(s).getfPos() == father && father != -1)
                 || (treeArray.get(s).getmPos() == mother && mother != -1))
                 && s != i) {
-          System.out.println("\n--- Sibling ---");
-          System.out.println("Name = " + treeArray.get(s).getName());
-          System.out.println("Date of Birth = " + treeArray.get(s).getdOB());
-          System.out.println("Birth Place = " + treeArray.get(s).getBirthPlace());
+          System.out.print("\n--- Sibling ---");
+          treeArray.get(s).details();
           sibling = true;
         }
       }//for(siblings)
@@ -257,7 +243,7 @@ public class FamilyTree {
     if (i == -1) {
       System.out.println("\n[Person does not exist]");
     } else {
-      System.out.println("\nPaternal Lineage =");
+      System.out.print("\nPaternal Lineage =");
       System.out.println("- " + treeArray.get(i).getName() + " " + treeArray.get(i).getdOB());
       int father = treeArray.get(i).getfPos();
       while (father != -1) {//While the next object has a father linked.
@@ -279,7 +265,7 @@ public class FamilyTree {
     if (i == -1) {
       System.out.println("\n[Person does not exist]");
     } else {
-      System.out.println("\nMaternal Lineage =");
+      System.out.print("\nMaternal Lineage =");
       System.out.println("- " + treeArray.get(i).getName() + " " + treeArray.get(i).getdOB());
       int mother = treeArray.get(i).getmPos();
       while (mother != -1) {//While the next object has a mother linked.
@@ -307,17 +293,11 @@ public class FamilyTree {
         int Mgrandfather = treeArray.get(mother).getfPos();//Returns the position of the mother's father object in the array.
 
         System.out.println("\n[Maternal Side]");
-        System.out.println("--- Grandmother ---");
-        System.out.println("Name = " + treeArray.get(Mgrandmother).getName());
-        System.out.println("Date of Birth = " + treeArray.get(Mgrandmother).getdOB());
-        System.out.println("Birth Place = " + treeArray.get(Mgrandmother).getBirthPlace());
-        System.out.println("Married = " + treeArray.get(Mgrandmother).isMarried());
+        System.out.print("--- Grandmother ---");
+        treeArray.get(Mgrandmother).details();
 
-        System.out.println("\n--- Grandfather ---");
-        System.out.println("Name = " + treeArray.get(Mgrandfather).getName());
-        System.out.println("Date of Birth = " + treeArray.get(Mgrandfather).getdOB());
-        System.out.println("Birth Place = " + treeArray.get(Mgrandfather).getBirthPlace());
-        System.out.println("Married = " + treeArray.get(Mgrandfather).isMarried());
+        System.out.print("\n--- Grandfather ---");
+        treeArray.get(Mgrandfather).details();
       } catch (Exception e) {
         System.out.println("\n[" + personName + " has no grandparents on their maternal side]");
       }
@@ -328,17 +308,11 @@ public class FamilyTree {
         int Pgrandfather = treeArray.get(father).getfPos();//Returns the position of the father's father object in the array.
 
         System.out.println("\n[Paternal Side]");
-        System.out.println("--- Grandmother ---");
-        System.out.println("Name = " + treeArray.get(Pgrandmother).getName());
-        System.out.println("Date of Birth = " + treeArray.get(Pgrandmother).getdOB());
-        System.out.println("Birth Place = " + treeArray.get(Pgrandmother).getBirthPlace());
-        System.out.println("Married = " + treeArray.get(Pgrandmother).isMarried());
+        System.out.print("--- Grandmother ---");
+        treeArray.get(Pgrandmother).details();
 
-        System.out.println("--- Grandfather ---");
-        System.out.println("Name = " + treeArray.get(Pgrandfather).getName());
-        System.out.println("Date of Birth = " + treeArray.get(Pgrandfather).getdOB());
-        System.out.println("Birth Place = " + treeArray.get(Pgrandfather).getBirthPlace());
-        System.out.println("Married = " + treeArray.get(Pgrandfather).isMarried());
+        System.out.print("--- Grandfather ---");
+        treeArray.get(Pgrandfather).details();
       } catch (Exception e) {
         System.out.println("\n[" + personName + " has no grandparents on their paternal side]");
       }
@@ -372,10 +346,8 @@ public class FamilyTree {
                 }
               }//for
               if (!fail) {
-                System.out.println("\n--- Grandchild ---");
-                System.out.println("Name = " + treeArray.get(gc).getName());
-                System.out.println("Date of Birth = " + treeArray.get(gc).getdOB());
-                System.out.println("Birth Place = " + treeArray.get(gc).getBirthPlace());
+                System.out.print("\n--- Grandchild ---");
+                treeArray.get(gc).details();
                 grandchildArray.add(treeArray.get(gc));
                 grandchild = true;
               }
@@ -424,10 +396,8 @@ public class FamilyTree {
                   }
                 }//for
                 if (!fail) {
-                  System.out.println("\n--- Cousin ---");
-                  System.out.println("Name = " + treeArray.get(c).getName());
-                  System.out.println("Date of Birth = " + treeArray.get(c).getdOB());
-                  System.out.println("Birth Place = " + treeArray.get(c).getBirthPlace());
+                  System.out.print("\n--- Cousin ---");
+                  treeArray.get(c).details();
                   cousinArray.add(treeArray.get(c));
                   cousin = true;
                 }
@@ -456,10 +426,8 @@ public class FamilyTree {
                   }
                 }//for
                 if (!fail) {
-                  System.out.println("\n--- Cousin ---");
-                  System.out.println("Name = " + treeArray.get(c).getName());
-                  System.out.println("Date of Birth = " + treeArray.get(c).getdOB());
-                  System.out.println("Birth Place = " + treeArray.get(c).getBirthPlace());
+                  System.out.print("\n--- Cousin ---");
+                  treeArray.get(c).details();
                   cousinArray.add(treeArray.get(c));
                   cousin = true;
                 }
@@ -492,7 +460,7 @@ public class FamilyTree {
     if (i == -1) {
       System.out.println("\n[Person does not exist]");
     } else {
-      System.out.println("\n--- Ancestors ---");
+      System.out.print("\n--- Ancestors ---");
       ancestorArray.add(treeArray.get(i));//Puts the person requested into the array to start the search.
       boolean genAdd = true, countAdd = false;//Booleans to control the flow.
       int generation = -1;
@@ -617,16 +585,26 @@ public class FamilyTree {
   //----------------------- Extra Methods --------------------------------------
   public int personPos(String personName) {
     Scanner responseScan = new Scanner(System.in);
-    for (int i = 0; i < treeArray.size(); i++) {//Checks all matches of the person requested until the user is happy.
+    ArrayList<Person> matchArray = new ArrayList();
+    int x = -1, count = 0;
+    for (int i = 0; i < treeArray.size(); i++) {//Checks all matches of the person requested.
       if (personName.equals(treeArray.get(i).getName())) {
-        System.out.println("\n\"" + treeArray.get(i).getdOB() + "\"");
-        System.out.println("Is this " + personName + "'s DOB? (y/n) : ");
-        String response = responseScan.nextLine();
-        if ("y".equals(response)) {
-          return i;
-        }
+        matchArray.add(treeArray.get(i));
+        count++;
+        x = i;
       }
     }//for(personName)
+    if (count == 1) {
+      return x;
+    } else if (count > 1) {
+      System.out.println("");
+      for (int y = 0; y < matchArray.size(); y++) {//User selects from the possibilites.
+        System.out.println((y + 1) + ") " + matchArray.get(y).getName() + " born in " + matchArray.get(y).getdOB());
+      }
+      System.out.println("\nPlease choose from list of duplicate names : ");
+      int response = responseScan.nextInt();
+      return personPos(matchArray.get(response - 1).getName(), matchArray.get(response - 1).getdOB());
+    }
     return -1;
   }//personID()
 
