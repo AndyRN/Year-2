@@ -598,7 +598,11 @@ public class FamilyTree {
   
   public void listCurrentPartner(String personName) {
     int i = personPos(personName);
-    treeArray.get(i).listCurrentPartner();
+    if(treeArray.get(i).getpPos() != -1){
+      treeArray.get(treeArray.get(i).getpPos()).details();
+    } else {
+      System.out.println("\n[" + personName + " does not currently have a partner]");
+    }
   }
   
   public int personPos(String personName) {

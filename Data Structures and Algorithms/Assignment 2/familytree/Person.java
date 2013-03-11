@@ -46,15 +46,6 @@ public class Person {
     relationshipArray.add(partner);
   }
 
-  public void listCurrentPartner() {
-    if (relationshipArray.isEmpty()) {
-      System.out.println("\n[" + this.name + " has had no partners]");
-    } else {
-      System.out.println("");
-      relationshipArray.get(relationshipArray.size() - 1).details();
-    }
-  }//listCurrentPartner()
-
   public void listAllPartners() {
     if (relationshipArray.isEmpty()) {
       System.out.println("\n[" + this.name + " has had no partners]");
