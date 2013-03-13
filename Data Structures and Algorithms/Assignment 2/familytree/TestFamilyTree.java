@@ -117,7 +117,6 @@ public class TestFamilyTree {
         default:
           System.out.println("\n[Invalid input choice. Try again]\n");                    //do nothing
       }
-      delay();
       inputMenu();
       try {
         selection = selectionScan.nextLine().toUpperCase();
@@ -125,7 +124,7 @@ public class TestFamilyTree {
       } catch (Exception e) {
       }
     }
-  }
+  }//processInput()
 
   /**
    * Processes a family tree query by calling the relevant FamilyTree method.
@@ -199,7 +198,6 @@ public class TestFamilyTree {
         default:
           System.out.println("\n[Invalid input choice. Try again]\n");
       }
-      delay();
       queryMenu();
       try {
         selection = selectionScan.nextLine().toUpperCase();
@@ -207,7 +205,7 @@ public class TestFamilyTree {
       } catch (Exception e) {
       }
     }
-  }
+  }//processQuery()
 
   /**
    * Displays the top-level TestFamilyTree menu
@@ -337,8 +335,7 @@ public class TestFamilyTree {
         fTree1.makeLinkToMother(name, dOB, mName, mDOB);
       }
     }
-    delay();
-  }
+  }//loadData()
 
   /**
    * Displays the top and subsequent level menus.
@@ -386,12 +383,4 @@ public class TestFamilyTree {
       }
     }
   }//main()
-
-  //--------------------------- Extra Methods ----------------------------------
-  public void delay() {
-    int delay = 2000000000;
-    while (delay != 0) {
-      delay--;
-    }
-  }//delay()
 }//TestFamilyTree.java

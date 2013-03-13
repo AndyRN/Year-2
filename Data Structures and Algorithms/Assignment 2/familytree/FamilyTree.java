@@ -218,9 +218,15 @@ public class FamilyTree {
       //This loop finds all person objects that have their fPos or mPos pointing at the person requested's fPos or mPos.
       for (int s = 0; s < treeArray.size(); s++) {
         if (((treeArray.get(s).getfPos() == father && father != -1)
-                || (treeArray.get(s).getmPos() == mother && mother != -1))
+                && (treeArray.get(s).getmPos() == mother && mother != -1))
                 && s != i) {
           System.out.print("\n--- Sibling ---");
+          treeArray.get(s).details();
+          sibling = true;
+        } else if (((treeArray.get(s).getfPos() == father && father != -1)
+                || (treeArray.get(s).getmPos() == mother && mother != -1))
+                && s != i) {
+          System.out.print("\n--- Half-Sibling ---");
           treeArray.get(s).details();
           sibling = true;
         }
@@ -537,17 +543,17 @@ public class FamilyTree {
               if (treeArray.get(c).getfPos() != -1) {
                 if (treeArray.get(treeArray.get(c).getfPos()).getName().equals(successorArray.get(x).getName())
                         && (treeArray.get(treeArray.get(c).getfPos()).getdOB().equals(successorArray.get(x).getdOB()))) {
-                  found = true;
+                  found = true;//If the mother has a child...
                 }
               }//if(fatherExists)
               if (treeArray.get(c).getmPos() != -1) {
                 if (treeArray.get(treeArray.get(c).getmPos()).getName().equals(successorArray.get(x).getName())
                         && (treeArray.get(treeArray.get(c).getmPos()).getdOB().equals(successorArray.get(x).getdOB()))) {
-                  found = true;
+                  found = true;//...Or the father has a child...
                 }
               }//if(motherExists)
               if (found) {
-                successorArray.add(treeArray.get(c));//If they have a child, that child is added.
+                successorArray.add(treeArray.get(c));//...Then that child is added.
                 count++;
                 genAdd = true;
                 found = false;
@@ -585,31 +591,30 @@ public class FamilyTree {
   }//recordAdoption()
 
   //----------------------- Extra Methods --------------------------------------
-  
   public void listAllPartners(String personName) {
     int i = personPos(personName);
     treeArray.get(i).listAllPartners();
   }
-  
+
   public void listAllParents(String personName) {
     int i = personPos(personName);
     treeArray.get(i).listAllParents();
   }
-  
+
   public void listCurrentPartner(String personName) {
     int i = personPos(personName);
-    if(treeArray.get(i).getpPos() != -1){
+    if (treeArray.get(i).getpPos() != -1) {
+      System.out.print("\n--- Partner ---");
       treeArray.get(treeArray.get(i).getpPos()).details();
     } else {
       System.out.println("\n[" + personName + " does not currently have a partner]");
     }
   }
-  
+
   public int personPos(String personName) {
     Scanner responseScan = new Scanner(System.in);
     ArrayList<Person> matchArray = new ArrayList();
     int x = -1, count = 0;
-    boolean fail = true;
     for (int i = 0; i < treeArray.size(); i++) {//Checks all matches of the person requested.
       if (personName.equals(treeArray.get(i).getName())) {
         matchArray.add(treeArray.get(i));
